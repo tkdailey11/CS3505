@@ -2,22 +2,22 @@
 
 using namespace std;
 
-double numFoxes = 0;
-double numRabbits = 0;
-
-//Parameters for testing the update Population method.
-double g = 0.2;
-double K = 1000;
-double p = 0.002;
-double m = 0.2;
-double c = 0.6;
-
-void updatePopulations(double g, double p, double c, double m, double K, double &numRabbits, double &numFoxes);
+void updatePopulations(double g, double K, double p, double m, double c, double &numRabbits, double &numFoxes);
 void incrementCounter(int*);
 void plotCharacter(int, char);
 void chart(double, double, double);
 
 int main(){
+  
+  double numFoxes = 0;
+  double numRabbits = 0;
+
+  double rabbitGrowth = 0.2;
+  double predationRate = 0.002;
+  double foxPreyConversion = 0.6;
+  double foxMortalityRate = 0.2;
+  double carryCapacity = 1000.0;
+
   cout << "Please enter a value for the initial Fox population: " << endl;
   cin >> numFoxes;
   cout << "Please enter a value for the initial Rabbit population: " << endl;
@@ -27,18 +27,18 @@ int main(){
 
   while(numSimulations < 500 && numFoxes > 0 && numRabbits > 0){
     chart(numRabbits, numFoxes, 0.1);
-    updatePopulations(g, K, p, m, c, numRabbits, numFoxes);
+    updatePopulations(rabbitGrowth, carryCapacity, predationRate, foxMortalityRate, foxPreyConversion, numRabbits, numFoxes);
     int* ptr = &numSimulations;
     incrementCounter(ptr);
-    //cout << "Rabbits: " << numRabbits << " Foxes: " << numFoxes << endl;
   }
+  return 0;
 }
 
-void updatePopulations(double g, double K, double p, double m, double c, double &R, double &F){
-  R = numRabbits;
-  F = numFoxes;
-  numRabbits = R + (g*R*(1-(R/K))-(p*R*F));
-  numFoxes = F + (c*p*R*F - m*F);
+void updatePopulations(double g, double K, double p, double m, double c, double &rabbits, double &Foxes){
+  double R = rabbits;
+  double F = Foxes;
+  rabbits = R + (g*R*(1-(R/K))-(p*R*F));
+  Foxes = F + (c*p*R*F - m*F);
 }
 
 /*
