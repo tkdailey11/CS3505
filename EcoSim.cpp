@@ -1,5 +1,7 @@
 //CS3505 Assignment 1, 8/26/16
 //@author Tyler Dailey, u0765892
+//This program provides an ASCII chart, in the terminal, modeling the growth and decline of
+//rabbit and fox populations.
 #include <iostream>
 
 using namespace std;
@@ -24,7 +26,7 @@ int main(){
   double foxMortalityRate = 0.2;
   double carryCapacity = 1000.0;
 
-  cout << "Please enter values for the initial Fox and Rabbit Populations: " << endl;
+  cout << "Please enter values for the initial Fox and Rabbit Populations (separated by a whitespace): " << endl;
 
   int numSimulations = 0;
 
