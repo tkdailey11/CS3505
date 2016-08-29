@@ -106,6 +106,3 @@ void plotCharacter(int spaces, char c){
   line = line + c;
   cout << line;
 }
-    
-
-  
