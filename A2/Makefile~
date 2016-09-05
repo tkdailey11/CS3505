@@ -1,0 +1,35 @@
+# Turn the Point class into a static library and compile against that instead of the .o
+
+CC = g++
+CFLAGS = -Wall -std=c++11
+
+# Define a variable to show where libPoint.a is
+HARUPDFLIBDIR = . #it is in the current directory
+
+LIBHARUDIR = ./libharu/src
+
+# Define a directory for where the Point library headers are
+HARUPDFLIBINCLUDE = .
+
+LIBHARUINCLUDE = ./libharu/include
+
+# -lPoint expands to libPoint.a
+HaruPDFTest : libHaruPDF.a SpiralPDF.o
+	$(CC) $(CFLAGS) -o HaruPDFTest SpiralPDF.o -L$(HARUPDFLIBDIR) -L$(LIBHARUDIR) -lPoint
+
+# Normally, a library would be built out of a collection of .o files
+libHaruPDF.a: HaruPDF.o
+	ar -rcs libHaruPDF.a HaruPDF.o
+
+HaruPDF.o : $(HARUPDFLIBINCLUDE)/HaruPDF.h HaruPDF.cpp
+	$(CC) $(CFLAGS) -c -I$(HARUPDFLIBINCLUDE) -I$(LIBHARUINCLUDE) HaruPDF.cpp
+
+SpiralPDF.o : SpiralPDF.cpp $(HARUPDFLIBINCLUDE)/HaruPDF.h
+	$(CC) $(CFLAGS) -c -I$(HARUPDFLIBINCLUDE) SpiralPDF.cpp
+
+# add a make clean and make test option
+clean:
+	rm HaruPDFTest *.o libHaruPDF.a
+
+test:
+	./HaruPDFTest

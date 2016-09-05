@@ -1,0 +1,9 @@
+/* Test code for the HaruPDF class*/
+
+#include "HaruPDF.h"
+
+int main(){
+    HaruPDF pdf;
+    pdf.createPDF();
+    return 0;
+}

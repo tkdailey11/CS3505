@@ -26,25 +26,30 @@ int main(){
   double foxMortalityRate = 0.2;
   double carryCapacity = 1000.0;
 
-  cout << "Please enter values for the initial Fox and Rabbit Populations (separated by a whitespace): " << endl;
+  cout << "Please enter a value for the initial Fox population: " << endl;
+  bool foxesInputValid = (cin >> numFoxes);
+  if(!foxesInputValid){
+    cout << "Invalid Entry..." << endl;
+    return -1;
+  }
+
+  cout << "Please enter a value for the initial Rabbit population: " << endl;
+  bool rabbitsInputValid = (cin >> numRabbits);
+  if(!rabbitsInputValid){
+    cout << "Invalid Entry..." << endl;
+    return -1;
+  }
+
 
   int numSimulations = 0;
 
-  //If the input stream parses as two ints, then compute and plot the populations,
-  //otherwise inform the user of their invalid entires, and terminate the program.
-  if(cin >> numFoxes && cin >> numRabbits){
-    while(numSimulations < 500 && numFoxes > 0 && numRabbits > 0){
-      chart(numRabbits, numFoxes, 0.1);
-      updatePopulations(rabbitGrowth, carryCapacity, predationRate, foxMortalityRate, foxPreyConversion, numRabbits, numFoxes);
-      int* ptr = &numSimulations;
-      incrementCounter(ptr);
-    }
-    return 0;
+  while(numSimulations < 500 && numFoxes > 0 && numRabbits > 0){
+    chart(numRabbits, numFoxes, 0.1);
+    updatePopulations(rabbitGrowth, carryCapacity, predationRate, foxMortalityRate, foxPreyConversion, numRabbits, numFoxes);
+    int* ptr = &numSimulations;
+    incrementCounter(ptr);
   }
-  else{
-    cout << "Invalid entries..." << endl;
-    return 1;
-  }
+  return 0;
 }
 
 //Takes in all of the environmental factors pertinent to the approximation of the fox and rabbit populations,
@@ -64,7 +69,7 @@ void chart(double rabbits, double Foxes, double scale){
   string line = "";
   int foxSpaces = Foxes*scale;
   int rabbitSpaces = rabbits*scale;
-  
+
   //Check to see whether the two populations are equal, in which case a '*' is placed
   // the appropriate number of spaces from the left.
   if(foxSpaces == rabbitSpaces){
