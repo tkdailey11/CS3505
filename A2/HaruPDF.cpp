@@ -57,6 +57,6 @@ void HaruPDF::save(char *filename){
     HPDF_Free (pdf);
 }
 
-void HaruPDF::advancePosition(double a, double b, double c, double d, double x, double y){
-    HPDF_Page_SetTextMatrix(page, a, b, c, d, x, y);
+void HaruPDF::advancePosition(double rad1, double x, double y){
+    HPDF_Page_SetTextMatrix(page, cos(rad1), sin(rad1), -sin(rad1), cos(rad1), x, y);
 }

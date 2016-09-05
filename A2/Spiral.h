@@ -6,11 +6,11 @@ class Spiral {
 public:
     Spiral(double, double, double);
     //What should be the parameter and return type here???
-    double operator++(Spiral);
+    void operator++();
     double get_text_x();
     double get_text_y();
     double get_spiral_angle();
     double get_text_angle();
     //Overload ostream <<
-    friend ostream& operator<<(ostream& output, Spiral sp);
+    friend std::ostream& operator<<(std::ostream& output, Spiral sp);
 };

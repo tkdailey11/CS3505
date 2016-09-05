@@ -9,5 +9,5 @@ public:
     void placeCharacter(char);
     void save(char*);
     void newDocument(char*);
-    void advancePosition(double, double, double, double, double, double);
+    void advancePosition(double, double, double);
 };

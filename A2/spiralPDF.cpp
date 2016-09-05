@@ -1,9 +1,26 @@
 /* Test code for the HaruPDF class*/
-
+#include <string.h>
 #include "HaruPDF.h"
+#include "Spiral.h"
 
-int main(){
+int main(int argc, char **argv){
+    char *filename = argv[0];
+    char *text = argv[1];
+
     HaruPDF pdf;
-    pdf.makePDF();
+    Spiral sp = Spiral(200, 310, 10);
+
+    unsigned int i;
+
+    for(i=0; i < strlen(text); i++){
+        pdf.advancePosition(sp.get_text_angle(), sp.get_text_x(), sp.get_text_y());
+        pdf.placeCharacter(text[i]);
+        sp++;
+    }
+
+    pdf.save(filename);
+
+
+
     return 0;
 }
