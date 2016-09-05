@@ -15,7 +15,7 @@ int main(int argc, char **argv){
     for(i=0; i < strlen(text); i++){
         pdf.advancePosition(sp.get_text_angle(), sp.get_text_x(), sp.get_text_y());
         pdf.placeCharacter(text[i]);
-        sp++;
+        //sp++;
     }
 
     pdf.save(filename);

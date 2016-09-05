@@ -33,10 +33,6 @@ HaruPDF::HaruPDF(){
     HPDF_Page_SetFontAndSize (page, font, 30);
 }
 
-int main(){
-return 0;
-}
-
 void HaruPDF::placeCharacter(char character){
     char buf[2];
     // C-style strings are null-terminated. The last character must a 0.

@@ -6,10 +6,6 @@
 #include <iostream>
 #include "Spiral.h"
 
-int main(){
-    return 0;
-}
-
 double center_X;
 double center_Y;
 double radius_;
@@ -48,20 +44,45 @@ double Spiral::get_text_y(){
     return text_Y;
 }
 
-std::ostream& operator<<(std::ostream& output, Spiral sp){
+/*
+std::ostream& Spiral::operator<<(std::ostream& output, Spiral sp){
     output << "Spiral Angle: " << rad2 << " Radius: " << radius_ << std::endl;
     return output;
 }
+*/
 
-void Spiral::operator++(){
+/* Prefix
+const Spiral& Spiral::operator++(Spiral& sp, int){
 
-    rad1 = (angle2 - 90) / 180 * M_PI;
-    rad2 = angle2 / 180 * M_PI;
+    sp.rad1 = (sp.angle2 - 90) / 180 * M_PI;
+    sp.rad2 = sp.angle2 / 180 * M_PI;
 
-    text_X = center_X + cos(rad2) * 150;
-    text_Y = center_Y + sin(rad2) * 150;
+    sp.text_X = sp.center_X + cos(sp.rad2) * 150;
+    sp.text_Y = sp.center_Y + sin(sp.rad2) * 150;
 
 
-    radius_ += 2.5;
-    angle2 -= 10.0;
+    sp.radius_ += 2.5;
+    sp.angle2 -= 10.0;
+
+    return sp;
 }
+*/
+
+/* Postfix
+Spiral& Spiral::operator++(Spiral& sp, int){
+
+    Spiral spBefore = sp;
+
+    sp.rad1 = (sp.angle2 - 90) / 180 * M_PI;
+    sp.rad2 = sp.angle2 / 180 * M_PI;
+
+    sp.text_X = sp.center_X + cos(sp.rad2) * 150;
+    sp.text_Y = sp.center_Y + sin(sp.rad2) * 150;
+
+
+    sp.radius_ += 2.5;
+    sp.angle2 -= 10.0;
+
+    return spBefore;
+}
+*/
