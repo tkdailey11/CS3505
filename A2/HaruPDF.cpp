@@ -30,7 +30,7 @@ HaruPDF::HaruPDF(){
 
     HPDF_Page_BeginText (page);
 
-    HPDF_Page_SetFontAndSize (page, font, 30);
+    HPDF_Page_SetFontAndSize (page, font, 20);
 }
 
 void HaruPDF::placeCharacter(char character){

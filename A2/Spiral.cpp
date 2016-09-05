@@ -3,17 +3,8 @@
  */
 #define _USE_MATH_DEFINES
 #include <math.h>
-#include <iostream>
 #include "Spiral.h"
 
-double center_X;
-double center_Y;
-double radius_;
-double text_X;
-double text_Y;
-double angle2;
-double rad1;
-double rad2;
 
 Spiral::Spiral(double centerX, double centerY, double radius){
     center_X = centerX;
@@ -23,9 +14,17 @@ Spiral::Spiral(double centerX, double centerY, double radius){
     /*  Text along circle */
     angle2 = 180;
 
-    if(radius_ < 10){
-        radius_ = 10.0;
+    rad1 = (angle2 - 90) / 180 * M_PI;
+    rad2 = angle2 / 180 * M_PI;
+
+    if(radius_ < 2){
+        radius_ = 2.0;
     }
+
+    text_X = (center_X) + cos(rad2) * 122;
+    text_Y = (center_Y) + sin(rad2) * 122;
+
+    radius_ += 1;
 }
 
 double Spiral::get_spiral_angle(){
@@ -44,45 +43,39 @@ double Spiral::get_text_y(){
     return text_Y;
 }
 
-/*
-std::ostream& Spiral::operator<<(std::ostream& output, Spiral sp){
-    output << "Spiral Angle: " << rad2 << " Radius: " << radius_ << std::endl;
+std::ostream& operator<<(std::ostream& output, Spiral sp){
+    output << "Spiral Angle: " << sp.rad2 << " Radius: " << sp.radius_ << std::endl;
     return output;
 }
-*/
 
-/* Prefix
-const Spiral& Spiral::operator++(Spiral& sp, int){
+// Prefix
+Spiral& operator++(Spiral& sp){
 
     sp.rad1 = (sp.angle2 - 90) / 180 * M_PI;
     sp.rad2 = sp.angle2 / 180 * M_PI;
 
-    sp.text_X = sp.center_X + cos(sp.rad2) * 150;
-    sp.text_Y = sp.center_Y + sin(sp.rad2) * 150;
+    sp.text_X = (sp.center_X) + cos(sp.rad2) * 122;
+    sp.text_Y = (sp.center_Y) + sin(sp.rad2) * 122;
 
-
-    sp.radius_ += 2.5;
-    sp.angle2 -= 10.0;
+    //sp.radius_ += 1;
+    sp.angle2 -= 10;
 
     return sp;
 }
-*/
 
-/* Postfix
-Spiral& Spiral::operator++(Spiral& sp, int){
+// Postfix
+Spiral& operator++(Spiral& sp, int){
 
-    Spiral spBefore = sp;
+    Spiral& spBefore = sp;
 
     sp.rad1 = (sp.angle2 - 90) / 180 * M_PI;
     sp.rad2 = sp.angle2 / 180 * M_PI;
 
-    sp.text_X = sp.center_X + cos(sp.rad2) * 150;
-    sp.text_Y = sp.center_Y + sin(sp.rad2) * 150;
+    sp.text_X = sp.radius_ + sp.center_X + cos(sp.rad2) * 150;
+    sp.text_Y = sp.radius_ + sp.center_Y + sin(sp.rad2) * 150;
 
-
-    sp.radius_ += 2.5;
+    //sp.radius_ += 1;
     sp.angle2 -= 10.0;
 
     return spBefore;
 }
-*/
