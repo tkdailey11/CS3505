@@ -1,3 +1,5 @@
+#Written by Tyler Dailey, 9/5/16, for CS3505 Assignment 2.
+
 CC = g++
 CFLAGS = -Wall -std=c++11
 

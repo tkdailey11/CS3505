@@ -1,10 +1,11 @@
 /*
- * Written By: Tyler Dailey, for Assignment 2, CS3505, 9/3/16
+ * Written By: Tyler Dailey, for Assignment 2, CS3505, 9/5/16
  */
 #include <iostream>
 
 class Spiral {
 
+    //Private member variables of the class
     double center_X;
     double center_Y;
     double radius_;
@@ -13,8 +14,10 @@ class Spiral {
     double angle2;
     double rad1;
     double rad2;
+
 public:
     Spiral(double, double, double);
+
     //Prefix
     friend Spiral& operator++(Spiral&);
     //Postfix
