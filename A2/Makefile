@@ -3,9 +3,9 @@
 CC = g++
 CFLAGS = -Wall -std=c++11
 
-HARUPDFLIBDIR = .
+HARUPDFLIBDIR = ./
 
-HARUPDFLIBINCLUDE = .
+HARUPDFLIBINCLUDE = ./
 
 LIBHARUDIR = ./libharu/src
 
@@ -35,12 +35,15 @@ clean:
 test:
 	./HaruPDFTest "This is the text that will be turned into a spiral. It was borrowed from the example given in the Assignment 2 Specifications."
 
-test2:
+testShort:
 	./HaruPDFTest "This is a short text test."
 
-test3:
+testLong:
 	./HaruPDFTest "This is to test to see what happens when I enter a really long string. Hopefully it will just reach the edges of the page and then be cut off because the page is too small to contain the text. This is probably long enough to test this boundary case."
 
-test4:
+testCompileRun:
 	make HaruPDFTest
 	make test
+
+testReallyLong:
+	./HaruPDFTest "This is to test to see what happens when I enter a really long string. Hopefully it will just reach the edges of the page and then be cut off because the page is too small to contain the text. This is probably long enough to test this boundary case. The only difference between this test and testLong is that I am adding on all of this extra text in order to hopefully fill the entire page. If this text works, who knows if this sentence will even be placed on the page. I am hoping that this doesn't overlap with previous text."
