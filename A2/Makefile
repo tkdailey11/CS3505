@@ -7,9 +7,9 @@ HARUPDFLIBDIR = .
 
 HARUPDFLIBINCLUDE = .
 
-LIBHARUDIR = libharu/src
+LIBHARUDIR = ./libharu/src
 
-LIBHARUINCLUDE = libharu/include
+LIBHARUINCLUDE = ./libharu/include
 
 EXTRALIBRARIES = -lhpdfs -lm -lz
 
