@@ -2,7 +2,6 @@
  * Written By: Tyler Dailey, for Assignment 2, CS3505, 9/5/16
  */
 #include <iostream>
-
 class Spiral {
 
     //Private member variables of the class

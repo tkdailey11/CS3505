@@ -16,7 +16,7 @@ int main(int argc, char **argv){
     char *text = argv[1];
 
     HaruPDF pdf;
-    Spiral sp = Spiral(250, 250, 45);
+    Spiral sp = Spiral(200, 300, 45);
 
     unsigned int i;
 

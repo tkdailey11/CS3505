@@ -1,8 +1,6 @@
 /*
  * Written By: Tyler Dailey, for Assignment 2, CS3505, 9/5/16
  */
-
-
 class HaruPDF {
 public:
     HaruPDF();
