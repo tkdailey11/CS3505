@@ -21,8 +21,8 @@ Spiral::Spiral(double centerX, double centerY, double radius){
         radius_ = 2.0;
     }
 
-    text_X = (center_X) + cos(rad2) * 122;
-    text_Y = (center_Y) + sin(rad2) * 122;
+    text_X = (center_X) + cos(rad2) * 150;
+    text_Y = (center_Y) + sin(rad2) * 150;
 
     radius_ += 1;
 }
@@ -54,10 +54,10 @@ Spiral& operator++(Spiral& sp){
     sp.rad1 = (sp.angle2 - 90) / 180 * M_PI;
     sp.rad2 = sp.angle2 / 180 * M_PI;
 
-    sp.text_X = (sp.center_X) + cos(sp.rad2) * 122;
-    sp.text_Y = (sp.center_Y) + sin(sp.rad2) * 122;
+    sp.text_X = sp.radius_ + sp.center_X + cos(sp.rad2) * 150;
+    sp.text_Y = sp.radius_ + sp.center_Y + sin(sp.rad2) * 150;
 
-    //sp.radius_ += 1;
+    sp.radius_ += 1;
     sp.angle2 -= 10;
 
     return sp;
