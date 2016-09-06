@@ -44,7 +44,3 @@ test3:
 test4:
 	make HaruPDFTest
 	make test
-
-testCircle:
-	make HaruPDFTest
-	./HaruPDFTest "This text should go into a circle."
