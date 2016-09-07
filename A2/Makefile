@@ -30,7 +30,10 @@ Spiral.o : Spiral.cpp
 	$(CC) $(CFLAGS) -c Spiral.cpp
 
 clean:
-	rm HaruPDFTest *.o libHaruPDF.a HaruPDFTest.pdf
+	rm HaruPDFTest *.o libHaruPDF.a
+
+cleanPDF:
+	rm  HaruPDFTest.pdf
 
 test:
 	./HaruPDFTest "This is the text that will be turned into a spiral. It was borrowed from the example given in the Assignment 2 Specifications."
