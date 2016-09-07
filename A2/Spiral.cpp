@@ -14,7 +14,7 @@ Spiral::Spiral(double centerX, double centerY, double radius){
     center_Y = centerY;
     radius_ = radius;
 
-    // Allows the text to move in a circular pattern.
+    // Defines the starting point of the text.
     angle2 = 90;
 
     // rad1 is the angle of the character, while rad2 is the angle around the circle. Both are represented in radians.
@@ -28,10 +28,9 @@ Spiral::Spiral(double centerX, double centerY, double radius){
     text_X = (center_X) + cos(rad2) * radius_;
     text_Y = (center_Y) + sin(rad2) * radius_;
 
-    //Add a little buffer to the starting X value, so the text doesn't overlap.
+    //Add a little buffer to the starting position, so the text doesn't overlap.
     center_X += 10;
     center_Y -= 5;
-
     radius_ += 1;
 }
 

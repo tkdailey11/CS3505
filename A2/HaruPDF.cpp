@@ -1,6 +1,6 @@
 /*
  * Fascade Class written to provide more convenient access to the HaruPDF C library.
- * Written By: Tyler Dailey, 9/3/16
+ * Written By: Tyler Dailey, 9/6/16
  * Assignment 2, CS3505
  */
 

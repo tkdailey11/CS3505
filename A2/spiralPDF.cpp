@@ -20,15 +20,23 @@ int main(int argc, char **argv){
 
     unsigned int i;
 
-    for(i=0; i < strlen(text); i++){
-        pdf.advancePosition(sp.get_text_angle(), sp.get_text_x(), sp.get_text_y());
-        pdf.placeCharacter(text[i]);
+    if(argc < 2){
+        std::cout << "No Text Entered..." << std::endl;
+        return -1;
+    }
+    else{
+        for(i=0; i < strlen(text); i++){
+            pdf.advancePosition(sp.get_text_angle(), sp.get_text_x(), sp.get_text_y());
+            pdf.placeCharacter(text[i]);
 
-        //Use either the pre-increment or post-increment operators, they produce the same output.
-        //++sp;
-        sp++;
+            //Use either the pre-increment or post-increment operators, they produce the same output.
+            //++sp;
+            sp++;
+        }
+
+        pdf.save(filename);
+        return 0;
     }
 
-    pdf.save(filename);
-    return 0;
+
 }
