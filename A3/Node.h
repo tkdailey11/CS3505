@@ -5,14 +5,12 @@
 
 class Node{
 
-    Node* node_[];
+    Node* node_[26];
     bool isWord_;
 
 public:
 
     Node();
-
-    Node(char);
 
     Node(const Node&);
 
@@ -24,8 +22,10 @@ public:
     char* getKey();
     void setKey(char*);
 
-    Node **getArray();
+    Node** getArray();
+    /*/
     void addToArray(Node*, int);
+    */
 
 
 };

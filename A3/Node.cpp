@@ -2,8 +2,11 @@
 #include <string>
 
 Node::Node(){
-    node_ = new Node*[26];
     isWord_ = false;
+
+    for (std::size_t i = 0; i < 26; i++){
+        node_[i] = nullptr;
+    }
 }
 
 Node::Node(const Node& other){
@@ -28,10 +31,13 @@ void Node::setIsWord(bool b){
     isWord_ = b;
 }
 
-Node **Node::getArray(){
+
+Node** Node::getArray(){
     return node_;
 }
 
+/*
 void Node::addToArray(Node* other, int index){
     node_[index] = other;
 }
+*/

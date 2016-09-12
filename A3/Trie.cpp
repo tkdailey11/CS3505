@@ -1,5 +1,6 @@
 #include "Node.h"
 #include "Trie.h"
+#include <iostream>
 
 Trie::Trie(){
 
@@ -21,18 +22,24 @@ void Trie::addWord(std::string s){
     Node* nextNode = root_;
 
     for(std::size_t i = 0; i < s.length(); i++){
-        char c = s[i];
-        int index = c-'a';
+        //char c = s[i];
 
-        Node n(c);
+        std::cout << s[i] << std::endl;
 
-        if(nextNode->getArray()[index] == nullptr){
-            nextNode->addToArray(&n, index);
-            nextNode = &n;
-        }
-        else{
-            nextNode = nextNode->getArray()[index];
-        }
+        int index = s[i]-'a';
+
+        std::cout << index << std::endl;
+
+        Node* n = new Node();
+
+        Node** arr = nextNode->getArray();
+
+        std::cout << sizeof(arr) << std::endl;
+
+        nextNode = arr[index];
+
+        if(nextNode == nullptr)
+            nextNode = n;
     }
 
 }
