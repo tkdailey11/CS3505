@@ -7,10 +7,16 @@ Node::Node(){
 
     node_ = new Node*[26];
 
+    /*/
     for (std::size_t i = 0; i < 26; i++){
         node_[i] = nullptr;
         std::cout << i << std::endl;
     }
+
+    for (std::size_t i = 0; i < 26; i++){
+        std::cout << node_[i] << std::endl;
+    }
+    */
 }
 
 Node::Node(const Node& other){
