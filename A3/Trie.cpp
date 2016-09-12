@@ -3,7 +3,7 @@
 #include <iostream>
 
 Trie::Trie(){
-
+    root_ = new Node;
 }
 
 Trie::Trie(const Trie& other){
@@ -11,6 +11,9 @@ Trie::Trie(const Trie& other){
     root_ = &n;
 }
 
+Trie::~Trie(){
+    delete root_;
+}
 
 Trie& Trie::operator=(Trie other){
     std::swap(root_, other.root_);

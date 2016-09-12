@@ -1,7 +1,6 @@
 #ifndef Node_h
 #define Node_h
 
-#include <vector>
 
 class Node{
 
@@ -15,6 +14,8 @@ public:
     Node(const Node&);
 
     Node& operator=(Node);
+
+    ~Node();
 
     bool getIsWord();
     void setIsWord(bool b);

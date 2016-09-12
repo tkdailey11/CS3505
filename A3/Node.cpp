@@ -7,7 +7,6 @@ Node::Node(){
 
     node_ = new Node*[26];
 
-    /*/
     for (std::size_t i = 0; i < 26; i++){
         node_[i] = nullptr;
         std::cout << i << std::endl;
@@ -16,7 +15,7 @@ Node::Node(){
     for (std::size_t i = 0; i < 26; i++){
         std::cout << node_[i] << std::endl;
     }
-    */
+
 }
 
 Node::Node(const Node& other){
@@ -26,6 +25,9 @@ Node::Node(const Node& other){
         node_[i] = other.node_[i];
 }
 
+Node::~Node(){
+    delete [] node_;
+}
 
 Node& Node::operator=(Node other){
     std::swap(isWord_, other.isWord_);

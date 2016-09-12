@@ -12,7 +12,7 @@ class Trie{
 public:
     Trie();
 
-    //~Trie();
+    ~Trie();
 
     Trie(const Trie&);
 
