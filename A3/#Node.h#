@@ -12,8 +12,6 @@ public:
 
     Node();
 
-    Node(char);
-
     Node(const Node&);
 
     Node& operator=(Node);
@@ -21,10 +19,7 @@ public:
     bool getIsWord();
     void setIsWord(bool b);
 
-    char* getKey();
-    void setKey(char*);
-
-    Node **getArray();
+    Node*[] getArray();
     void addToArray(Node*, int);
 
 

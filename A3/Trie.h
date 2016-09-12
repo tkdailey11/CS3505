@@ -3,6 +3,7 @@
 
 #include "Node.h"
 #include <string>
+#include <vector>
 
 class Trie{
 

@@ -26,12 +26,12 @@ void Trie::addWord(std::string s){
 
         Node n(c);
 
-        if(nextNode->getVector().at(index) == nullptr){
-            nextNode->addToVector(&n, index);
+        if(nextNode->getArray()[index] == nullptr){
+            nextNode->addToArray(&n, index);
             nextNode = &n;
         }
         else{
-            nextNode = nextNode->getVector().at(index);
+            nextNode = nextNode->getArray()[index];
         }
     }
 

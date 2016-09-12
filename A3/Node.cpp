@@ -2,33 +2,21 @@
 #include <string>
 
 Node::Node(){
-    std::string s = "root";
-    key_ = (char*)s.c_str();
-    vect_.resize(26);
-}
-
-Node::Node(char c){
-    key_ = &c;
-    vect_.resize(26);
+    node_ = new Node*[26];
+    isWord_ = false;
 }
 
 Node::Node(const Node& other){
     isWord_ = other.isWord_;
-    key_ = other.key_;
 
-    std::vector<Node*> n(other.vect_.size());
-
-    vect_ = n;
-
-    for(std::size_t i = 0; i < vect_.size(); i++)
-        vect_.at(i) = other.vect_.at(i);
+    for(std::size_t i = 0; i < 26; i++)
+        node_[i] = other.node_[i];
 }
 
 
 Node& Node::operator=(Node other){
     std::swap(isWord_, other.isWord_);
-    std::swap(vect_, other.vect_);
-    std::swap(key_, other.key_);
+    std::swap(node_, other.node_);
     return *this;
 }
 
@@ -40,18 +28,10 @@ void Node::setIsWord(bool b){
     isWord_ = b;
 }
 
-char* Node::getKey(){
-    return key_;
+Node **Node::getArray(){
+    return node_;
 }
 
-void Node::setKey(char* c){
-    key_ = c;
-}
-
-std::vector<Node*> Node::getVector(){
-    return vect_;
-}
-
-void Node::addToVector(Node* other, int index){
-    vect_.at(index) = other;
+void Node::addToArray(Node* other, int index){
+    node_[index] = other;
 }
