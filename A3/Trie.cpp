@@ -25,26 +25,16 @@ void Trie::addWord(std::string s){
     Node* nextNode = root_;
 
     for(std::size_t i = 0; i < s.length(); i++){
-        //char c = s[i];
 
         int index = s[i]-'a';
 
-        std::cout << "index is: " << index << std::endl;
+        Node** arr = nextNode->getArray();
 
-        Node* n = new Node();
+        if(arr[index] == nullptr){
+            nextNode->addToArray(index);
+        }
 
-        std::cout << "Creates new Node*" << std::endl;
-
-        //nextNode->getArray()[index];
-
-        //std::cout << "Size of array (in bytes): " << sizeof(arr) << std::endl;
-
-        nextNode = nextNode->getArray(index);
-
-        std::cout << "Success accessing the array " << std::endl;
-
-        if(nextNode == nullptr)
-            nextNode->addToArray(n, index);
+        nextNode = nextNode->getArray()[index];
     }
 
     nextNode->setIsWord(true);
@@ -53,16 +43,23 @@ void Trie::addWord(std::string s){
 
 bool Trie::isWord(std::string s){
 
+    if(s == ""){
+        return false;
+    }
+
     Node* nextNode = root_;
 
     for(std::size_t i = 0; i < s.length(); i++){
 
         int index = s[i]-'a';
 
-        nextNode = nextNode->getArray(index);
+        Node** arr = nextNode->getArray();
 
-        if(nextNode == nullptr)
+        if(arr[index] == nullptr){
             return false;
+        }
+
+        nextNode = nextNode->getArray()[index];
     }
 
     return true;

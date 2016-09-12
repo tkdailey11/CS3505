@@ -23,9 +23,9 @@ public:
     char* getKey();
     void setKey(char*);
 
-    Node *getArray(int);
+    Node **getArray();
 
-    void addToArray(Node*, int);
+    void addToArray(int);
 
 };
 

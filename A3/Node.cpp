@@ -9,13 +9,7 @@ Node::Node(){
 
     for (std::size_t i = 0; i < 26; i++){
         node_[i] = nullptr;
-        std::cout << i << std::endl;
     }
-
-    for (std::size_t i = 0; i < 26; i++){
-        std::cout << node_[i] << std::endl;
-    }
-
 }
 
 Node::Node(const Node& other){
@@ -44,11 +38,11 @@ void Node::setIsWord(bool b){
 }
 
 
-Node* Node::getArray(int index){
-    return node_[index];
+Node** Node::getArray(){
+    return node_;
 }
 
 
-void Node::addToArray(Node* other, int index){
-    node_[index] = other;
+void Node::addToArray(int index){
+    node_[index] = new Node();
 }
