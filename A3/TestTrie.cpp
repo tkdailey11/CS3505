@@ -1,6 +1,7 @@
 #include "Trie.h"
 #include <iostream>
 #include <string>
+#include "fstream"
 
 int main(){
     std::string s = "hello";
@@ -33,6 +34,42 @@ int main(){
     else{
         std::cout << "Failure" << std::endl;
     }
+
+    std::ifstream file;
+    file.open("dictionary.txt");
+    if (!file.is_open())
+        return -1;
+
+    std::string word;
+    while (file >> word){
+        t.addWord(word);
+    }
+    file.close();
+
+    bool allWordsAdded = true;
+
+    file.open("dictionary.txt");
+    if(!file.is_open()){
+        return -1;
+    }
+
+    while(file >> word){
+        if(!t.isWord(word)){
+            allWordsAdded = false;
+        }
+    }
+
+    if(allWordsAdded){
+        std::cout << "Success Adding Dictionary." << std::endl;
+    }
+    else{
+        std::cout << "Failure Adding Dictionary." << std::endl;
+    }
+
+
+
+
+
 
     return 0;
 }
