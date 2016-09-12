@@ -48,8 +48,7 @@ Node* Node::getArray(int index){
     return node_[index];
 }
 
-/*
+
 void Node::addToArray(Node* other, int index){
     node_[index] = other;
 }
-*/

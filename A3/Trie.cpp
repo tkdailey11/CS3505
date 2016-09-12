@@ -44,13 +44,28 @@ void Trie::addWord(std::string s){
         std::cout << "Success accessing the array " << std::endl;
 
         if(nextNode == nullptr)
-            nextNode = n;
+            nextNode->addToArray(n, index);
     }
+
+    nextNode->setIsWord(true);
 
 }
 
 bool Trie::isWord(std::string s){
-    return false;
+
+    Node* nextNode = root_;
+
+    for(std::size_t i = 0; i < s.length(); i++){
+
+        int index = s[i]-'a';
+
+        nextNode = nextNode->getArray(index);
+
+        if(nextNode == nullptr)
+            return false;
+    }
+
+    return true;
 }
 
 std::vector<std::string> Trie::allWordsWithPrefix(std::string s){

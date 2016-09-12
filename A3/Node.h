@@ -24,10 +24,8 @@ public:
     void setKey(char*);
 
     Node *getArray(int);
-    /*/
-    void addToArray(Node*, int);
-    */
 
+    void addToArray(Node*, int);
 
 };
 

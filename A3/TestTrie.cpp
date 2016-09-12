@@ -4,12 +4,16 @@
 
 int main(){
     std::string s = "hello";
+    std::string x = "not";
 
     Trie t;
 
     t.addWord(s);
 
-    std::cout << "Success" << std::endl;
+    bool isWord1 = t.isWord(s);
+    std::cout << isWord1 << std::endl;
+    isWord1 = t.isWord(x);
+    std::cout << isWord1 << std::endl;
 
     return 0;
 }
