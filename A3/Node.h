@@ -5,7 +5,7 @@
 
 class Node{
 
-    Node* node_[26];
+    Node **node_;
     bool isWord_;
 
 public:
@@ -22,7 +22,7 @@ public:
     char* getKey();
     void setKey(char*);
 
-    Node** getArray();
+    Node *getArray(int);
     /*/
     void addToArray(Node*, int);
     */

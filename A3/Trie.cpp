@@ -24,19 +24,21 @@ void Trie::addWord(std::string s){
     for(std::size_t i = 0; i < s.length(); i++){
         //char c = s[i];
 
-        std::cout << s[i] << std::endl;
-
         int index = s[i]-'a';
 
-        std::cout << index << std::endl;
+        std::cout << "index is: " << index << std::endl;
 
         Node* n = new Node();
 
-        Node** arr = nextNode->getArray();
+        std::cout << "Creates new Node*" << std::endl;
 
-        std::cout << sizeof(arr) << std::endl;
+        //nextNode->getArray()[index];
 
-        nextNode = arr[index];
+        //std::cout << "Size of array (in bytes): " << sizeof(arr) << std::endl;
+
+        nextNode = nextNode->getArray(index);
+
+        std::cout << "Success accessing the array " << std::endl;
 
         if(nextNode == nullptr)
             nextNode = n;

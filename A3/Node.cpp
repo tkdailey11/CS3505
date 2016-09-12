@@ -1,11 +1,15 @@
 #include "Node.h"
 #include <string>
+#include <iostream>
 
 Node::Node(){
     isWord_ = false;
 
+    node_ = new Node*[26];
+
     for (std::size_t i = 0; i < 26; i++){
         node_[i] = nullptr;
+        std::cout << i << std::endl;
     }
 }
 
@@ -32,8 +36,8 @@ void Node::setIsWord(bool b){
 }
 
 
-Node** Node::getArray(){
-    return node_;
+Node* Node::getArray(int index){
+    return node_[index];
 }
 
 /*
