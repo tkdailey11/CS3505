@@ -3,7 +3,7 @@ CFLAGS = -Wall -std=c++11 -g
 TRIEINCLUDE = ./
 TRIELIB = ./
 
-TrieTest : libTrie.a TestTrie.o
+TestTrie : libTrie.a TestTrie.o
 	$(CC) $(CFLAGS) -o TrieTest TestTrie.o -L$(TRIELIB) -lTrie
 
 libTrie.a : Trie.o Node.o TestTrie.o

@@ -66,10 +66,13 @@ int main(){
         std::cout << "Failure Adding Dictionary." << std::endl;
     }
 
+    std::vector<std::string> results = t.allWordsWithPrefix("p");
 
+    std::cout << "Vector Size: " << results.size() << std::endl;
 
-
-
+    for(std::size_t i = 0; i < results.size(); i ++){
+        std::cout << results.at(i) << std::endl;
+    }
 
     return 0;
 }
