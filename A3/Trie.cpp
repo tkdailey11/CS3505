@@ -37,6 +37,7 @@ void Trie::addWord(std::string s){
         nextNode = nextNode->getArray()[index];
     }
 
+    //I don't think this is working properly...
     nextNode->setIsWord(true);
 
 }
@@ -48,6 +49,7 @@ bool Trie::isWord(std::string s){
     }
 
     Node* nextNode = root_;
+    Node* prevNode = root_;
 
     for(std::size_t i = 0; i < s.length(); i++){
 
@@ -55,18 +57,15 @@ bool Trie::isWord(std::string s){
 
         Node** arr = nextNode->getArray();
 
-        if(arr[index] == nullptr){
-            return false;
-        }
+        prevNode = nextNode;
 
         nextNode = arr[index];
     }
 
-    return true;
+    return prevNode->getIsWord();
 }
 
 std::vector<std::string> Trie::allWordsWithPrefix(std::string prefix){
-    std::vector<std::string> result;
 
     Node* endOfWord = root_;
 
@@ -77,12 +76,13 @@ std::vector<std::string> Trie::allWordsWithPrefix(std::string prefix){
         endOfWord = arr[index];
     }
 
-    result = recurSearch(endOfWord, prefix);
+    results_.clear();
+    recurSearch(endOfWord, prefix);
 
-    return result;
+    return results_;
 }
 
-std::vector<std::string> Trie::recurSearch(Node* parentNode, std::string word){
+void Trie::recurSearch(Node* parentNode, std::string word){
 
     std::vector<std::string> test;
 
@@ -93,15 +93,11 @@ std::vector<std::string> Trie::recurSearch(Node* parentNode, std::string word){
             std::string temp = word + c;
             //It is actually traversing through the Trie correctly, now it just needs
             //to add them to some vector to return...
-            std::cout << temp << std::endl;
-            std::vector<std::string> b = recurSearch(arr[i], temp);
-            test.insert(std::end(test), std::begin(b), std::end(b));
-        }
-        if(i == 25 && parentNode->getIsWord()){
-            std::cout << word << std::endl;
-            test.push_back(word);
+            if(isWord(temp)){
+                results_.push_back(temp);
+            }
+            //results_.push_back(word);
+            recurSearch(arr[i], temp);
         }
     }
-
-    return test;
 }

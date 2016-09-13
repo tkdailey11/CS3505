@@ -30,7 +30,7 @@ Node& Node::operator=(Node other){
 }
 
 bool Node::getIsWord(){
-    return false;
+    return isWord_;
 }
 
 void Node::setIsWord(bool b){

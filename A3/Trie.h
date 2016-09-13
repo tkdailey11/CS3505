@@ -10,7 +10,9 @@ class Trie{
 private:
     Node* root_;
 
-    std::vector<std::string> recurSearch(Node*, std::string);
+    std::vector<std::string> results_;
+
+    void recurSearch(Node*, std::string);
 
 public:
     Trie();

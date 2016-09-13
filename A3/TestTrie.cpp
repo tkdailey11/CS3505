@@ -66,7 +66,7 @@ int main(){
         std::cout << "Failure Adding Dictionary." << std::endl;
     }
 
-    std::vector<std::string> results = t.allWordsWithPrefix("p");
+    std::vector<std::string> results = t.allWordsWithPrefix("pac");
 
     std::cout << "Vector Size: " << results.size() << std::endl;
 
