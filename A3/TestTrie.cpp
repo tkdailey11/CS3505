@@ -13,26 +13,26 @@ int main(){
 
     //Check to see if the word was added correctly.
     if(t.isWord(s)){
-        std::cout << "Success" << std::endl;
+        std::cout << "Success adding Word" << std::endl;
     }
     else{
-        std::cout << "Failure" << std::endl;
+        std::cout << "Failure adding word" << std::endl;
     }
 
     //Check to see if a word that is not in the Trie is reported as false.
     if(!t.isWord(x)){
-        std::cout << "Success" << std::endl;
+        std::cout << "Success: word not in trie" << std::endl;
     }
     else{
-        std::cout << "Failure" << std::endl;
+        std::cout << "Failure: word not in trie" << std::endl;
     }
 
     //Check to see if an empty string is reported as false.
     if(!t.isWord("")){
-        std::cout << "Success" << std::endl;
+        std::cout << "Success: empty word" << std::endl;
     }
     else{
-        std::cout << "Failure" << std::endl;
+        std::cout << "Failure: empty word" << std::endl;
     }
 
     std::ifstream file;

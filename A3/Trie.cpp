@@ -37,9 +37,8 @@ void Trie::addWord(std::string s){
         nextNode = nextNode->getArray()[index];
     }
 
-    //I don't think this is working properly...
-    nextNode->setIsWord(true);
-
+    bool b = true;
+    nextNode->setIsWord(b);
 }
 
 bool Trie::isWord(std::string s){
@@ -49,7 +48,6 @@ bool Trie::isWord(std::string s){
     }
 
     Node* nextNode = root_;
-    Node* prevNode = root_;
 
     for(std::size_t i = 0; i < s.length(); i++){
 
@@ -57,12 +55,14 @@ bool Trie::isWord(std::string s){
 
         Node** arr = nextNode->getArray();
 
-        prevNode = nextNode;
+        if(arr[index] == nullptr){
+            return false;
+        }
 
         nextNode = arr[index];
     }
 
-    return prevNode->getIsWord();
+    return nextNode->getIsWord();
 }
 
 std::vector<std::string> Trie::allWordsWithPrefix(std::string prefix){
