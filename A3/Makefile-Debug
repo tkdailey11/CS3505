@@ -24,4 +24,4 @@ TestTrie.o : $(TRIEINCLUDE)Trie.h TestTrie.cpp
 	$(CC) $(CFLAGS) -c -I$(TRIEINCLUDE) TestTrie.cpp
 
 clean :
-	rm TrieTest *.o libTrie.a
+	rm TestTrie *.o libTrie.a
