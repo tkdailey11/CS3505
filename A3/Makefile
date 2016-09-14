@@ -1,3 +1,6 @@
+#Created by Tyler Dailey, University of Utah, 9/13/16
+#Assignment 3, CS 3505
+
 CC = g++
 CFLAGS = -Wall -std=c++11
 TRIEINCLUDE = ./
@@ -20,3 +23,12 @@ TestTrie.o : $(TRIEINCLUDE)Trie.h TestTrie.cpp
 
 clean :
 	rm TestTrie *.o libTrie.a
+
+test:
+	./TestTrie "dictionary.txt" "dictionary2.txt"
+
+testZ:
+	./TestTrie "dictionary.txt" "z.txt"
+
+testZYX:
+	./TestTrie "dictionary.txt" "zyx.txt"

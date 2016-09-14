@@ -1,3 +1,9 @@
+/*
+ * Created by Tyler Dailey, University of Utah, 9/13/16
+ * Assignment 3, CS 3505
+ *
+ */
+
 #ifndef Trie_h
 #define Trie_h
 
@@ -28,6 +34,8 @@ public:
     bool isWord(std::string);
 
     std::vector<std::string> allWordsWithPrefix(std::string);
+    std::vector<std::string> wordsWithWildcardPrefix(std::string);
+
 };
 
 #endif

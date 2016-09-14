@@ -1,5 +1,7 @@
-people
-history
+x
+p
+h
+zyx
 way
 art
 world
@@ -23,7 +25,7 @@ food
 understanding
 theory
 law
-bird
+b
 literature
 problem
 software
@@ -35,10 +37,10 @@ economics
 love
 internet
 television
-science
+sci
 library
 nature
-fact
+fac
 product
 idea
 temperature

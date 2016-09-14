@@ -1,78 +1,75 @@
+/*
+ * Created by Tyler Dailey, University of Utah, 9/13/16
+ * Assignment 3, CS 3505
+ *
+ * Provides code to test the Trie class. Takes in two strings from the command
+ * line which specify files where the first one is the words to be added to
+ * the Trie, and the second file is a list of queries for the Trie.
+ */
+
 #include "Trie.h"
 #include <iostream>
 #include <string>
 #include "fstream"
 
-int main(){
-    std::string s = "hello";
-    std::string x = "not";
+int main(int argc, char* argv[]){
+
+    //If the correct number of input strings were not provided,
+    //report this, and terminate.
+    if(argc != 3){
+        std::cout << "Invalid Number of Arguments..." << std::endl;
+        return -1;
+    }
+
+    std::string filename1 = argv[1];
+    std::string filename2 = argv[2];
 
     Trie t;
 
-    t.addWord(s);
-
-    //Check to see if the word was added correctly.
-    if(t.isWord(s)){
-        std::cout << "Success adding Word" << std::endl;
-    }
-    else{
-        std::cout << "Failure adding word" << std::endl;
-    }
-
-    //Check to see if a word that is not in the Trie is reported as false.
-    if(!t.isWord(x)){
-        std::cout << "Success: word not in trie" << std::endl;
-    }
-    else{
-        std::cout << "Failure: word not in trie" << std::endl;
-    }
-
-    //Check to see if an empty string is reported as false.
-    if(!t.isWord("")){
-        std::cout << "Success: empty word" << std::endl;
-    }
-    else{
-        std::cout << "Failure: empty word" << std::endl;
-    }
-
-    std::ifstream file;
-    file.open("dictionary.txt");
-    if (!file.is_open())
+    //Open the first file and add all words to the Trie.
+    std::ifstream file1;
+    file1.open(filename1);;
+    if (!file1.is_open())
         return -1;
 
     std::string word;
-    while (file >> word){
+
+    //Read a word from the file into the word variable.
+    while (file1 >> word){
         t.addWord(word);
     }
-    file.close();
+    file1.close();
 
-    bool allWordsAdded = true;
-
-    file.open("dictionary.txt");
-    if(!file.is_open()){
+    //Check to see if all of the words in the second file are in the Trie.
+    std::ifstream file2;
+    file2.open(filename2);
+    if (!file2.is_open()){
         return -1;
     }
 
-    while(file >> word){
-        if(!t.isWord(word)){
-            allWordsAdded = false;
+    //Read a word from the file into the word variable.
+    while (file2 >> word){
+
+        if(t.isWord(word)){
+            std::cout << word << " is found" << std::endl;
         }
-    }
+        else{
 
-    if(allWordsAdded){
-        std::cout << "Success Adding Dictionary." << std::endl;
-    }
-    else{
-        std::cout << "Failure Adding Dictionary." << std::endl;
-    }
+            std::vector<std::string> wordsList = t.allWordsWithPrefix(word);
 
-    std::vector<std::string> results = t.allWordsWithPrefix("pac");
+            if(wordsList.size() == 0){
+                std::cout << "   no alternatives found" << std::endl;
+            }
+            else{
+                std::cout << word << " is not found, did you mean:" << std::endl;
+                for(std::size_t i = 0; i < wordsList.size(); i++){
+                    std::cout << "   " << wordsList.at(i) << std::endl;
+                }
+            }
+        }
 
-    std::cout << "Vector Size: " << results.size() << std::endl;
-
-    for(std::size_t i = 0; i < results.size(); i ++){
-        std::cout << results.at(i) << std::endl;
     }
+    file2.close();
 
     return 0;
 }

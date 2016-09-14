@@ -1,3 +1,8 @@
+#Created by Tyler Dailey, University of Utah, 9/13/16
+#Assignment 3, CS 3505
+
+#This makefile includes the -g flag for debugging purposes.
+
 CC = g++
 CFLAGS = -Wall -std=c++11 -g
 TRIEINCLUDE = ./
