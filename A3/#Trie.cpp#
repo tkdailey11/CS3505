@@ -128,8 +128,36 @@ void Trie::recurSearch(Node* parentNode, std::string word){
 }
 
 std::vector<std::string> Trie::wordsWithWildcardPrefix(std::string prefix){
-    std::vector<std::string> results;
-    return results;
-    //This link might help here:
-    //http://www.cplusplus.com/reference/string/string/find_first_of/
+    Node* endOfWord = root_;
+
+    //Advance down the Trie to the Node of the last character in prefix.
+    for(std::size_t i = 0; i < prefix.length(); i++){
+        Node** arr = endOfWord->getArray();
+        if(prefix[i] == '?'){
+            for(int j = 0; j < 26; j++){
+                if(arr[j] != nullptr){
+                    wordsWithWildcardPrefix();
+                    //This link might help here:
+                    //
+                }
+            }
+        }
+        else{
+            
+        }
+        int index = prefix[i]-'a';
+        endOfWord = arr[index];
+        if(endOfWord == nullptr){
+            results_.clear();
+            return results_;
+        }
+    }
+
+    results_.clear();
+    if(endOfWord == nullptr){
+        return results_;
+    }
+    recurSearch(endOfWord, prefix);
+
+    return results_;
 }
