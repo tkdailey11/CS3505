@@ -12,7 +12,7 @@
 Node::Node(){
     isWord_ = false;
 
-    for (std::size_t i = 0; i < 26; i++){
+    for (int i = 0; i < 26; i++){
         node_[i] = nullptr;
     }
 }
@@ -27,7 +27,9 @@ Node::Node(const Node& other){
 
 //Destructor
 Node::~Node(){
-    delete [] node_;
+    for(int i = 0; i < 26; i++){
+       delete node_[i];
+    }
 }
 
 //Override = operator

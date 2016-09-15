@@ -11,6 +11,7 @@
 
 //Default Constructor
 Trie::Trie(){
+    root_ = new Node;
 }
 
 //Copy Constructor
@@ -44,10 +45,13 @@ void Trie::addWord(std::string s){
         //Add a new Node to the array of NextNode. If there isn't a nullptr
         //at arr[index] the substring up to this point is already in the Trie.
         if(arr[index] == nullptr){
+
             nextNode->addToArray(index);
+
         }
 
-        nextNode = nextNode->getArray()[index];
+        nextNode = arr[index];
+
     }
 
     nextNode->setIsWord(true);

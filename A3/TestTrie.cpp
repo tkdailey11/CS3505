@@ -28,9 +28,11 @@ int main(int argc, char* argv[]){
 
     //Open the first file and add all words to the Trie.
     std::ifstream file1;
-    file1.open(filename1);;
-    if (!file1.is_open())
+    file1.open(filename1);
+    if(!file1.is_open() || file1.fail()){
+        std::cout << "Invalid File..." << std::endl;
         return -1;
+    }
 
     std::string word;
 
@@ -38,14 +40,20 @@ int main(int argc, char* argv[]){
     while (file1 >> word){
         t.addWord(word);
     }
+
+
     file1.close();
+
+
 
     //Check to see if all of the words in the second file are in the Trie.
     std::ifstream file2;
     file2.open(filename2);
-    if (!file2.is_open()){
+    if(!file2.is_open() || file2.fail()){
+        std::cout << "Invalid File..." << std::endl;
         return -1;
     }
+
 
     //Read a word from the file into the word variable.
     while (file2 >> word){

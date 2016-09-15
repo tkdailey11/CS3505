@@ -9,7 +9,7 @@ TRIEINCLUDE = ./
 TRIELIB = ./
 
 TestTrie : libTrie.a TestTrie.o
-	$(CC) $(CFLAGS) -o TrieTest TestTrie.o -L$(TRIELIB) -lTrie
+	$(CC) $(CFLAGS) -o TestTrie TestTrie.o -L$(TRIELIB) -lTrie
 
 libTrie.a : Trie.o Node.o TestTrie.o
 	ar -rcs libTrie.a Trie.o Node.o TestTrie.o
