@@ -8,11 +8,11 @@ CFLAGS = -Wall -std=c++11 -g
 TRIEINCLUDE = ./
 TRIELIB = ./
 
-TestTrie : libTrie.a TestTrie.o
-	$(CC) $(CFLAGS) -o TestTrie TestTrie.o -L$(TRIELIB) -lTrie
+TrieTest : libTrie.a TrieTest.o
+	$(CC) $(CFLAGS) -o TrieTest TrieTest.o -L$(TRIELIB) -lTrie
 
-libTrie.a : Trie.o Node.o TestTrie.o
-	ar -rcs libTrie.a Trie.o Node.o TestTrie.o
+libTrie.a : Trie.o Node.o TrieTest.o
+	ar -rcs libTrie.a Trie.o Node.o TrieTest.o
 
 Trie.o : $(TRIEINCLUDE)Trie.h Trie.cpp
 	$(CC) $(CFLAGS) -c -I$(TRIEINCLUDE) Trie.cpp
@@ -20,8 +20,8 @@ Trie.o : $(TRIEINCLUDE)Trie.h Trie.cpp
 Node.o : $(TRIEINCLUDE)Node.h Node.cpp
 	$(CC) $(CFLAGS) -c -I$(TRIEINCLUDE) Node.cpp
 
-TestTrie.o : $(TRIEINCLUDE)Trie.h TestTrie.cpp
-	$(CC) $(CFLAGS) -c -I$(TRIEINCLUDE) TestTrie.cpp
+TrieTest.o : $(TRIEINCLUDE)Trie.h TrieTest.cpp
+	$(CC) $(CFLAGS) -c -I$(TRIEINCLUDE) TrieTest.cpp
 
 clean :
-	rm TestTrie *.o libTrie.a
+	rm TrieTest *.o libTrie.a

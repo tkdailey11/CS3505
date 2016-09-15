@@ -44,6 +44,8 @@ int main(int argc, char* argv[]){
 
     file1.close();
 
+    //Create a copy of t in order to test the copy constructor of Trie.
+    Trie* copy = new Trie(t);
 
 
     //Check to see if all of the words in the second file are in the Trie.
@@ -58,7 +60,7 @@ int main(int argc, char* argv[]){
     //Read a word from the file into the word variable.
     while (file2 >> word){
 
-        if(t.isWord(word)){
+        if(copy->isWord(word)){
             std::cout << word << " is found" << std::endl;
         }
         else{

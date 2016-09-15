@@ -16,8 +16,8 @@ Trie::Trie(){
 
 //Copy Constructor
 Trie::Trie(const Trie& other){
-    Node n(*other.root_);
-    root_ = &n;
+    Node* n = new Node(*other.root_);
+    root_ = n;
 }
 
 //Destructor
